@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="login-bg p-4 row d-flex flex-row justify-content-center">
+
+    <div class="col-8 col-md-6 d-flex flex-column justify-content-center">
+        <h4 class="text-center text-md-end display-4">Welcome!!</h4>
+    </div>
+    <div class="login-container form-content col-8 col-md-4 shadow">
+        <form class="form-detail m-4" action="#" method="post">
+            {% csrf_token %}
+            <h5 class="text-center mb-4"><strong> Member Login </strong> </h5>
+
+            {% for message in messages %}
+                <div class="container-fluid p-0 m-0 mb-3">
+                    <div class="alert alert-{{ message.tags }} p-2 m-0" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+
+            <div class="row">
+                <!-- {% for message in messages %}
+                        <div class="container-fluid p-0">
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %} -->
+                <div class="col-md-12">
+                    <!-- <label for="validationServer01" class="form-label"><strong>Username</strong> </label> -->
+                    <input name="login_username" type="text" class="input-field form-control input-style"
+                        placeholder="username.." required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Please provide a valid text.
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="col-md-12 mt-4 mb-2">
+                    <!-- <label for="validationServer01" class="form-label"><strong>Confirm Password</strong> </label> -->
+                    <input name="login_password" type="password" class="form-control input-style"
+                        placeholder="password.." required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Please provide a valid text.
+                    </div>
+                </div>
+
+
+
+                <!-- submit button -->
+                <div class="form-row-last text-center mt-3">
+                    <input type="submit" name="login" class="w-100 loginbtn btn" value="login">
+                </div>
+                <div class="d-flex flex-row justify-content-between mt-3">
+                    <span class=""><a class="text-dark" href="#"> Forgot password?</a></span>
+                    <span class="">New user? <a class="text-dark" href="signup"> sign up</a></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

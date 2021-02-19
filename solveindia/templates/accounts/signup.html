@@ -1,0 +1,149 @@
+{% extends 'main.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div class="signup-page p-4 row">
+    {% for message in messages %}
+    <div class="container-fluid p-0 m-0">
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="login-container container form-content pt-4 pb-4 shadow col-md-5" style="color: #636363;">
+        <form id="signupForm" class="form-detail mt-4 mb-4" action="#" method="post">
+            {% csrf_token %}
+            <h5 class="text-center"><strong> Account Signup Form</strong> </h5>
+            <hr>
+            <div class="row m-4">
+                <!-- username -->
+                <div class="col-md-12">
+                    <label for="" class="form-label"><strong>Choose your username :)</strong></label> {{form.username}} {% if form.username.errors %} {% for error in form.username.errors %}
+                    <span class="text-danger">{{error}}</span> {% endfor %}
+                    <script>
+                        let usernameElement = document.getElementById('signup_username_id');
+                        usernameElement.classList.add('is-invalid')
+                    </script>
+                    {% else %}
+                    <!-- <script>
+                            let usernameElement = document.getElementById('signup_username_id');
+                            usernameElement.classList.add('is-valid')
+                            </script> -->
+                    {% endif %}
+                    <br />
+                </div>
+
+
+                <p><strong>Personal Details</strong></p>
+                <!-- first name -->
+                <div class="col-md-6">
+                    <!-- <label for="" class="form-label"><strong>First name</strong></label> -->
+                    {{form.first_name}} {% if form.first_name.errors %} {% for error in form.first_name.errors %}
+                    <span class="text-danger">{{error}}</span> {% endfor %}
+                    <script>
+                        let first_nameElement = document.getElementById('signup_first_name_id');
+                        first_nameElement.classList.add('is-invalid')
+                    </script>
+                    {% else %}
+                    <!-- <script>
+                            let first_nameElement = document.getElementById('signup_first_name_id');
+                            first_nameElement.classList.add('is-valid')
+                            </script> -->
+                    {% endif %}
+                </div>
+                <!-- last name -->
+                <div class="col-md-6">
+                    <!-- <label for="" class="form-label"><strong>Last name</strong></label> -->
+                    {{form.last_name}} {% if form.last_name.errors %} {% for error in form.last_name.errors %}
+                    <span class="text-danger">{{error}}</span> {% endfor %}
+                    <script>
+                        let last_nameElement = document.getElementById('signup_last_name_id');
+                        last_nameElement.classList.add('is-invalid');
+                    </script>
+                    {% else %}
+                    <!-- <script>
+                            let last_nameElement = document.getElementById('signup_last_name_id');
+                            last_nameElement.classList.add('is-valid')
+                            </script> -->
+                    {% endif %}
+                    <br />
+                </div>
+                <!-- image field -->
+                <!-- <div class="col-md-6">
+                        <label for="" class="form-label"><strong>Profile Picture</strong></label>
+                        {{ myform.profile_pic }}
+                        {% if myform.profile_pic.errors %}
+                            {% for error in myform.profile_pic.errors %}
+                                <span class="text-danger">{{error}}</span>
+                            {% endfor %}
+                        {% endif %}
+                        <br />
+                    </div> -->
+                <br>
+                <p><strong>Account Details*</strong></p>
+
+                <!-- email -->
+                <div class="col-md-12">
+                    <!-- <label for="" class="form-label"><strong>Email</strong></label> -->
+                    {{ form.email }} {% if form.email.errors %} {% for error in form.email.errors %}
+                    <span class="text-danger">{{error}}</span> {% endfor %}
+                    <script>
+                        let emailElement = document.getElementById('signup_email_id');
+                        emailElement.classList.add('is-invalid')
+                    </script>
+                    {% else %}
+                    <!-- <script>
+                            let emailElement = document.getElementById('signup_email_id');
+                            emailElement.classList.add('is-valid')
+                            </script> -->
+                    {% endif %}
+                    <br />
+                </div>
+                <br />
+                <!-- password1 -->
+                <div class="col-md-6">
+                    <!-- <label for="" class="form-label"><strong>Password*</strong></label> -->
+                    {{form.password1}} {% if form.password2.errors %} {% for error in form.password2.errors %}
+                    <span class="text-danger">{{error}}</span> {% endfor %}
+                    <script>
+                        let password1Element = document.getElementById('signup_password1_id');
+                        let password2Element = document.getElementById('signup_password2_id');
+                        password1Element.classList.add('is-invalid');
+                        password2Element.classList.add('is-invalid');
+                    </script>
+                    {% else %}
+                    <!-- <script>
+                            let password1Element = document.getElementById('signup_password1_id');
+                            let password2Element = document.getElementById('signup_password2_id');
+                            password1Element.classList.add('is-valid')
+                            password2Element.classList.add('is-valid')
+                            </script> -->
+                    {% endif %}
+                </div>
+                <!-- password2 -->
+                <div class="col-md-6">
+                    <!-- <label for="" class="form-label"><strong>Confirm Password</strong></label> -->
+                    {{form.password2}}
+                </div>
+                <!-- <p class="mt-2 text-end">(*)required fields</p> -->
+                <!-- submit button -->
+                <div class="col-12 mt-4">
+                    <div class="form-row-last text-center">
+                        <input type="submit" name="register" class="register loginbtn w-100 btn" value="Create Account">
+                        <br><br>
+                        <span>Already a user? <a class="signup-link text-secondary" href="login"> sign in</a></span>
+                        <style>
+                            .signup-link {
+                                text-decoration: none;
+                            }
+
+                            .signup-link:hover {
+                                text-decoration: underline;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

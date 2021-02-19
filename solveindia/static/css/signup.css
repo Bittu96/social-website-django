@@ -1,0 +1,71 @@
+.signup-page {
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-blue-minimalistic-leaves-background-illustration-paintedsimpleblueleaf-backgroundcartoon-backgroundcreative-image_54439.jpg');
+	background-size: cover;
+}
+
+.logbtn {
+	background-color: #368cbf;
+	color: white;
+	border-radius: 8px;
+	font-size: 12px;
+	padding: 20px;
+	margin-left: 10px;
+}
+
+.logbtn:hover {
+	background-color: #2e78a3;
+	color: white;
+}
+
+.signupbtn {
+	background-color: #6caa49;
+	color: white;
+	margin-left: 10px;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 2px;
+	padding-left: 10px;
+}
+
+.signupbtn:hover {
+	background-color: #55a128;
+	color: white;
+}
+
+.loginbtn {
+	background-color: #368cbf;
+	color: white;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px;
+}
+
+.loginbtn:hover {
+	background-color: #2e78a3;
+	color: white;
+}
+
+
+.login-container {
+	margin: auto;
+	background-color: white;
+	border-radius: 20px;
+
+}
+
+
+.input-style {
+	background-color: #F7F7F7 ;
+	border-width: 1px !important;
+	border-color: white ;
+	font-size: 12px !important;
+	padding: 10px !important;
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+.input-style:hover {
+	border-color: #cec9c9 !important;
+
+}
+

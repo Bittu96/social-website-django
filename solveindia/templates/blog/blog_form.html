@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="text-center"> Create Post</h6>
+                </div>
+                <div class="card-body">
+                    <form id="signupForm" class="form-detail" action="#" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <br />
+                        <div class="form-actions">
+                            <input type="submit" name="submit" value="Save" class="btn btn-outline-primary btn-sm"
+                                id="submit-save">
+                            <a class="btn btn-outline-secondary btn-sm" href="{% url 'blog:blog_list' %}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> sideber </div>
+                <div class="card-body"> sidebar content </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

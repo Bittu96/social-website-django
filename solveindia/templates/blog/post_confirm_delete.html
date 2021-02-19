@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="text-center"> Delete Post</h6>
+                </div>
+                <div class="card-body">
+                    <form id="signupForm" class="form-detail" method="post">
+                        {% csrf_token %}
+                        <h4 class="blog-title"><strong class="text-uppercase">
+                                Are you sure you wanna delete blog "{{object.title}}" ?
+                            </strong></h4>
+                        <br />
+                        <div class="form-actions">
+                            <a class="btn btn-outline-secondary btn-sm"
+                                href="{% url 'blog:blog_detail' object.id %}">Cancel</a>
+                            <input type="submit" class="btn btn-outline-danger btn-sm" value="Yes, delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> sideber </div>
+                <div class="card-body"> sidebar content </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="text-center"> Create Post</h6>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'blog:blog_create' %}">Create new blog</a>
+                </div>
+            </div>
+            {% for post in posts %}
+            <div class="card mt-4 mb-4">
+                <div class="blog-image">
+                    <!-- <h6 class="blog-category"><strong class="blog-category">INFRASTRUCTURE</strong></h6>
+                            <h4 class="blog-title"><strong>SUSTAINABLE CITY</strong></h4> -->
+                    <!-- <img class="w-100 h-100" src="https://citygreen-com.s3.us-west-2.amazonaws.com/wp-content/uploads/2016/06/12205934/Sustainable-City-inspires-innovation-in-Dubai.jpg" alt=""> -->
+                </div>
+                <div class="card-body">
+                    <h6 class="blog-category"><strong class="blog-category text-uppercase">{{post.category}}</strong>
+                    </h6>
+                    <h4 class="blog-title"><strong class="text-uppercase">{{post.title}}</strong></h4>
+                    <p class="blog-info font-light">
+                        <a href="" class="blog-info"><img class="rounded-circle"
+                                src="{{ post.author.profile.image.url }}" width="25" height='25'>
+                            {{post.author.username}}</a> | <i class="far fa-calendar-alt"></i>
+                        {{post.date_posted}} | <a href="" class="blog-info">comments</a> <span
+                            class="badge bg-secondary">3</span>
+                    </p>
+                    <hr>
+                    <p class="blog-content">
+                        {{post.content}}
+                        <a href="{% url 'blog:blog_detail' post.id %}">view more.. {{ post.id }}</a>
+                    </p>
+                    <hr>
+                    <div class="d-flex  flex-row justify-content-between">
+                        <span class="blog-info">
+                            <span class="blog-info">
+                                {% for tagitem in post.tags.all %}
+
+                                <a href="" class="blog-info me-1">
+                                    <i class="fas fa-tags blog-tags"></i>
+                                    {{ tagitem.name }}
+                                </a>
+
+                                {% endfor %}
+                            </span>
+                        </span>
+                        <span>
+                            <a class="blog-info p-2" href=""><i class="far fa-thumbs-up"></i></a>
+                            <a class="blog-info p-2" href=""><i class="far fa-comment"></i></a>
+                            <a class="blog-info p-2" href=""><i class="far fa-share-square"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> sideber </div>
+                <div class="card-body"> sidebar content </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

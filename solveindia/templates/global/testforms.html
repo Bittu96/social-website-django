@@ -1,0 +1,180 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="text-dark container-fluid home-bg">
+    <div class=" container">
+        <div class="row">
+            {% for message in messages %}
+            <div class="container-fluid p-0 m-0">
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-10 col-md-7 m-auto row mt-1">
+                <div class="wrapper mb-3 p-0">
+                    <div class="tabs d-flex flex-row justify-content-between">
+                        <div class="tab w-100">
+                            <input type="radio" value="users" name="q_options" id="q_users" checked class="tab-switch">
+                            <label for="q_users" class="tab-label">Users</label>
+                        </div>
+                        <div class="tab w-100">
+                            <input type="radio" value="blogs" name="q_options" id="q_blogs" class="tab-switch">
+                            <label for="q_blogs" class="tab-label">Blogs</label>
+                        </div>
+                        <div class="tab w-100">
+                            <input type="radio" name="q_options" id="q_other" class="tab-switch">
+                            <label for="q_other" class="tab-label">Forums</label>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    let q_users = document.getElementById('q_users');
+                    let q_blogs = document.getElementById('q_blogs');
+                    let q_other = document.getElementById('q_other');
+
+                    q_users.addEventListener("change", function (event) {
+                        let q_users_results = document.getElementById('q_users_results');
+                        let q_blogs_results = document.getElementById('q_blogs_results');
+                        q_users_results.classList.remove('d-none');
+                        q_blogs_results.classList.add('d-none');
+                    });
+
+                    q_blogs.addEventListener("change", function (event) {
+                        let q_users_results = document.getElementById('q_users_results');
+                        let q_blogs_results = document.getElementById('q_blogs_results');
+                        q_users_results.classList.add('d-none');
+                        q_blogs_results.classList.remove('d-none');
+                    });
+
+                </script>
+
+
+                <div id="q_users_results" class="p-0 m-0">
+                    {% if q_accounts %}
+                    {% for each_user in q_accounts %}
+                    <div class="bg-white rounded shadow-sm mb-3">
+                        <div class="row p-3 text-center text-md-start text-secondary">
+                            <div class="col-12 col-md-3">
+                                <a href="{% url 'accounts:vprofile' each_user.username %}">
+                                    <span class="text-dark">
+                                        <img class="image-circle rounded-circle"
+                                            style="height: 100px; width: 100px; object-fit: cover;"
+                                            src="{{ each_user.profile.image.url }}" alt="">
+                                    </span> </a>
+                            </div>
+                            <div class="col-md-4 d-flex flex-column justify-content-center">
+                                <a style="text-decoration: none;" class="h4 text-secondary"
+                                    href="{% url 'accounts:vprofile' each_user.username %}">
+                                    {{ each_user.username   }}</a>
+                                <p class="m-0 p-0"><small>Member since {{each_user.profile.date_created.date}}</small>
+                                </p>
+                                <p>26 Connections</p>
+                            </div>
+                            <div class="col-md-5 d-flex flex-column justify-content-center">
+                                <span>
+                                    <a class="btn btn-sm btn-outline-primary" href="">Follow</a>
+                                    <a class="btn btn-sm btn-outline-primary" href="">Connect</a>
+                                    <a class="btn btn-sm btn-outline-primary" href="">Message</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+
+                    <div class="bg-white rounded shadow-sm mt-3 mb-3">
+                        <div class="row p-3 text-center d-flex flex-column justify-content-cente">
+                            <p class="text-secondary"><small>No results</small></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+                <span id="q_blogs_results" class="p-0 m-0 d-none">
+
+                    {% if q_blogs %}
+                    {% for each_blog in q_blogs %}
+                    <div class="mb-3 rounded shadow-sm bg-light">
+                        <div class="row m-0">
+                            <div class="col-11 p-0 m-0">
+                                <div>
+                                    <div class="p-2">
+                                        <small class="blog-info py-0">
+                                            {% for tagitem in each_blog.tags.all %}
+                                            <a href="" class="blog-info me-1  text-secondary">
+                                                <i class="fas fa-tags blog-tags"></i>
+                                                {{ tagitem.name }}
+                                            </a>
+                                            {% endfor %}
+                                        </small>
+                                        <hr>
+                                        <h5 class="blog-category">{{ each_blog.category }}</h5>
+                                        <h6 class="blog-title">{{ each_blog.title }}</h6>
+                                    </div>
+                                    <img class="img-fluid w-100" src="{{ item.urlToImage }}" alt="">
+
+                                    <div class="">
+                                        <div class="p-2">
+                                            <p class="blog-description">{{ each_blog.description }}</p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="p-0 m-0">
+                                    <div class="p-2 bg-light">
+                                        <div class="d-flex  flex-row justify-content-between text-secondary fw-4">
+                                            <small>Posted by
+                                                <img class="image-circle rounded-circle"
+                                                    style="height: 25px; width: 25px; object-fit: cover;"
+                                                    src="{{ each_blog.author.profile.image.url }}" alt="">
+
+                                                {{ each_blog.author }} on {{ each_blog.date_posted }}
+                                            </small>
+                                            <span>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-save"></i>
+                                                    save</a>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-comment"></i> 64 comments</a>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-share-square"></i> share</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1 p-0 m-0">
+                                <span class="h-100 text-center text-white  d-flex flex-column justify-content-end"
+                                    style="background-color: rgb(178, 209, 221);">
+                                    <a href="" class="h1 p-0 m-0"><i class="fas fa-caret-up text-white"></i></a>
+                                    <p class="h6 p-0 m-0"><strong>132</strong></p>
+                                    <a href="" class="h1 p-0 m-0"><i class="fas fa-caret-down text-light"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+
+                    <div class="bg-white rounded shadow-sm mt-3">
+                        <div class="row p-3 text-center d-flex flex-column justify-content-cente">
+                            <p class="text-secondary"><small>No results</small></p>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </span>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

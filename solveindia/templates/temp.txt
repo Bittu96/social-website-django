@@ -1,0 +1,71 @@
+<p style="color: #C12F6C;"><strong>Personal Details</strong></p>
+                    <!-- first name -->
+                    <div class="col-md-6">
+                        <label for="validationServer01" class="form-label"><strong>First name*</strong></label>
+                        {{form.first_name}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <!-- last name -->
+                    <div class="col-md-6">
+                        <label for="validationServer01" class="form-label"><strong>Last name</strong></label>
+                        {{form.last_name}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <br>
+                    <p style="color: #C12F6C;"><strong>Account Details</strong></p>
+                    <!-- username -->
+                    <div class="col-md-12">
+                        <label for="validationServer01" class="form-label"><strong>Username*</strong></label>
+                        {{form.username}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <!-- email -->
+                    <div class="col-md-12">
+                        <label for="validationServer01" class="form-label"><strong>Email</strong></label>
+                        {{form.email}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <!-- password1 -->
+                    <div class="col-md-6">
+                        <label for="validationServer01" class="form-label"><strong>Password*</strong></label>
+                        {{form.password1}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <!-- password2 -->
+                    <div class="col-md-6">
+                        <label for="validationServer01" class="form-label"><strong>Confirm Password</strong></label>
+                        {{form.password2}}
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            Please provide a valid text.
+                        </div>
+                    </div>
+                    <p class="mt-2 text-end">(*)required fields</p>
+                    <!-- form errors -->

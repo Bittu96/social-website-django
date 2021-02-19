@@ -1,0 +1,19 @@
+
+.blog-category {
+ color: #7ebc59;
+ padding; 1px;
+ margin:0px;
+}
+
+.blog-tags {
+    color: #7ebc59;
+}
+
+.blog-title {
+    font-weight: 600;
+}
+
+.blog-description {
+    color: rgb(61, 61, 61);
+    font-weight: 500;
+}

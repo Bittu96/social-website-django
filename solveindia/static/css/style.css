@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&family=Montserrat:wght@100;300;500;700&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+.tabs {
+    position: relative;
+    /* height: 100vh; */
+    background: #1abc9c;
+    /* overflow-y: scroll; */
+}
+
+.tabs::before,
+.tabs::after {
+    content: "";
+    display: table;
+
+}
+.tabs::after {
+    clear: both;
+}
+.tab {
+    float: left;
+}
+.tab-switch {
+    display: none;
+}
+.tab-label {
+    position: relative;
+    display: block;
+    line-height: 2.75em;
+    height: 3em;
+    padding: 0 1.618em;
+    background: #1abc9c;
+    border-right: 0.125rem solid #16a085;
+    color: #fff;
+    cursor: pointer;
+    top: 0;
+    transition: all 0.25s;
+}
+.tab-label:hover {
+    top: -0.25rem;
+    transition: top 0.25s;
+}
+.tab-content {
+    position: absolute;
+    z-index: 1;
+    top: 2.75em;
+    left: 0;
+    padding: 1.618rem;
+    background: #fff;
+    color: #2c3e50;
+    border-bottom: 0.25rem solid #bdc3c7;
+    opacity: 0;
+    transition: all 0.35s;
+}
+.tab-switch:checked + .tab-label {
+    background: #fff;
+    color: #2c3e50;
+    border-bottom: 0;
+    border-right: 0.125rem solid #fff;
+    transition: all 0.35s;
+    z-index: 1;
+    top: -0.0625rem;
+}
+.tab-switch:checked + label + .tab-content {
+    z-index: 2;
+    opacity: 1;
+    transition: all 0.35s;
+}
+
+.alert {
+    border-radius: 0 !important;
+    text-align: center;
+}
+
+.main-logo {
+    background-color: #ffffff;
+    width: 80px;
+    height: 80px;
+}
+
+.body-mod {
+    font-size: 0.8rem;
+}
+
+#mainBg {
+    /* background-color: #F0F0ED; */
+    background-color: #DAE0E6;
+    /* #eaeaea; */
+    /* background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Simple-Minimalist-Background-Image.jpg');
+    background-size: cover; */
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'Noto Sans', sans-serif; */
+    /* font-family: 'Varela Round', sans-serif; */
+    /* font-family: 'Poppins', sans-serif; */
+    min-height: 100vh;
+    height: 100%;
+}
+
+.login-bg {
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-blue-minimalistic-leaves-background-illustration-paintedsimpleblueleaf-backgroundcartoon-backgroundcreative-image_54439.jpg');
+    background-size: cover;
+    height: 90vh
+}
+
+.accounts-bg {
+
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/092/525/non_2x/vector-mountain-forest-hills-background.jpg');
+    background-size: cover;
+}
+
+
+/* .accounts-bg {
+    background-image: url('https://vecta.io/blog/vector-background/snowflakes-vector.74a2c66a33.svg');
+    background-size: cover;
+    } */
+
+
+/* .profile-bg {
+    background-image: url('https://vecta.io/blog/vector-background/snowflakes-vector.74a2c66a33.svg');
+    background-size: cover;
+    } */
+
+    .carousel-item {
+        background-color: white;
+        height: 300px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        border-radius: 10px;
+        border-width: 0px !important;
+    }
+
+    .card-header {
+        background: linear-gradient(to left, #2980B9, #1abc9c);
+        color: #ffffff;
+    }
+
+    .team-join-btn {
+        /* height: 20px; */
+        font-size: 10px;
+        font-weight: bold;
+        border-radius: 15px;
+        width: 60px;
+    }
+
+    .navbar {
+        background-color: #33363C;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .nav-link:hover {
+        background-color: #272b31;
+        border-radius: 8px;
+    }
+
+    @media all and (min-width: 992px) {
+       .navbar .nav-item .dropdown-menu{ display: none; }
+       /* .navbar .nav-item:hover .nav-link{ color: #fff;  } */
+       .navbar .nav-item:hover .dropdown-menu{ display: block; }
+       .navbar .nav-item .dropdown-menu{ margin-top:0; }
+   }
+
+   .body-color {
+    color: green;
+}
+
+
+/*
+.stat-border {
+	border-style: solid;
+	border-color: #C12F6C;
+	border-width: 1px;
+	border-top-width: 0px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	margin-bottom: 15px;
+    } */
+
+    .stat-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .stats {
+        background-color: #55a128;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        color: white;
+        padding: 9px;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    .dropdown-menu {
+        background-color: #33363b;
+        border-width: 0;
+    }
+
+    .dropdown-item {
+        color: white !important;
+        font-size: 13px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #272b31;
+        font-size: 13px;
+    }
+
+    .trending-page {
+        height: 100vh;
+    }
+
+    .footer-section {
+        /* height: 200px; */
+        padding: 10px;
+        /* border-top-left-radius: 30px; */
+    }
+
+    .title-bar {
+        background-color: #33363b;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .title {
+        font-size: 25px;
+        font-family: 'Kaushan Script', cursive;
+    }
+
+    .account-link {
+        color: rgb(165, 165, 165);
+        text-decoration: none;
+    }
+
+    .account-link:hover {
+        color: rgb(223, 222, 222);
+    }
+
+    .carousel-indicators li {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+    }

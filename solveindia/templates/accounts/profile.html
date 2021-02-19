@@ -1,0 +1,306 @@
+{% extends 'main.html' %} {% block content %}
+<div class="profile-bg">
+    <section id="content" class="container">
+        <!-- Begin .page-heading -->
+
+        <div class="bg-dark p-4">
+            <div class="media clearfix row">
+                <div class="media-left pr30 col-12 col-md-4 text-center">
+                    <a href="#">
+                        <img class="media-object rounded-circle" src="{{ user.profile.image.url }}" alt="ProfilePic">
+                    </a>
+                </div>
+                <div class="d-md-none m-2">
+
+                </div>
+                <div class=" va-m col-12 col-md-8 text-center text-md-start">
+                    <h2 class="media-heading">@{{user.username}}
+                        {% if user.is_superuser %}
+                        <span>
+                            <span class="badge title-badge bg-danger">Admin</span>
+                            <!-- <span class="badge title-badge bg-/secondary"> offline</span> -->
+                        </span>
+                        {% endif %}
+                        <span>
+                            <span class="badge title-badge status-online">online</span>
+                            <!-- <span class="badge title-badge bg-/secondary"> offline</span> -->
+                        </span>
+                    </h2>
+                    <p class="lead"> {{user.first_name}} {{user.last_name}}
+                        <span style="font-size: 10px;"><small>
+                                (member since {{user.profile.date_created.date}})
+                            </small></span>
+                    </p>
+
+                    <p><i class="fas fa-user-friends"></i>
+                        <span class="ms-2">21</span> Connections
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-medal"></i>
+                        <span class="ms-2 me-1">15</span> Support Medals
+                    </p>
+                    <p class="lead"> {{ user.profile.bio }} </p>
+                    <div class="">
+
+                        <a href="{% url 'accounts:account' %}" type="button"
+                            class="me-2 btn btn-outline-secondary btn-sm">
+                            Edit Profile
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for message in messages %}
+        <div class="p-0 m-0">
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="m-0" style="height: 30px;">
+        </div>
+        <div class="row mt-0">
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="card-header">
+                        <span class="panel-icon">
+                            <i class="fa fa-star"></i>
+                        </span>
+                        <span class="panel-title"> My Presence</span>
+                    </div>
+                    <div class="panel-body pn">
+                        <table class="table mbn tc-icon-1 tc-med-2 tc-bold-last">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                    </td>
+                                    <td>Teams</td>
+                                    <td>
+                                        3
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-comments" aria-hidden="true"></i>
+                                    </td>
+                                    <td>Discussions</td>
+                                    <td>
+                                        7
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                    <td>Solutions</td>
+                                    <td>
+                                        2
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="card-header">
+                        <span class="panel-icon">
+                            <i class="fa fa-trophy"></i>
+                        </span>
+                        <span class="panel-title"> intrests </span>
+                    </div>
+                    <div class="panel-body pb5">
+                        <span class="badge bg-warning">Default</span>
+                        <span class="badge bg-primary mr5 mb10 ib lh15">Primary</span>
+                        <span class="badge bg-info mr5 mb10 ib lh15">Success</span>
+                        <span class="badge bg-success mr5 mb10 ib lh15">Info</span>
+                        <span class="badge bg-dark mr5 mb10 ib lh15">Warning</span>
+                        <span class="badge bg-danger mr5 mb10 ib lh15">Danger</span>
+                        <span class="badge bg-info mr5 mb10 ib lh15">Success</span>
+                        <span class="badge bg-success mr5 mb10 ib lh15">Ui Design</span>
+                        <span class="badge bg-primary mr5 mb10 ib lh15">Primary</span>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="card-header">
+                        <span class="panel-icon">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                        <span class="panel-title">About Me</span>
+                    </div>
+                    <div class="panel-body pb5">
+                        I am a human :)
+                        <h6>Experience</h6>
+                        <h4>Internship</h4>
+                        <p class="text-muted"> University of Missouri, Columbia
+                            <br> Student Health Center, June 2010 - 2012
+                        </p>
+                        <hr class="short br-lighter">
+                        <h6>Education</h6>
+                        <h4>Bachelor of Science, PhD</h4>
+                        <p class="text-muted"> University of Missouri, Columbia
+                            <br> Student Health Center, June 2010 through Aug 2011
+                        </p>
+                        <hr class="short br-lighter">
+                        <h6>Accomplishments</h6>
+                        <h4>Successful Business</h4>
+                        <p class="text-muted pb10"> University of Missouri, Columbia
+                            <br> Student Health Center, June 2010 through Aug 2011
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-block">
+                    <p class="text-center card-header"><strong>My Activity</strong> </p><br>
+
+                    {% for post in posts %}
+                    {% if post.author.username == user.username %}
+                    <div class="mb-3 rounded shadow-sm bg-light">
+                        <div class="row m-0">
+                            <div class="col-11 p-0 m-0">
+                                <div>
+                                    <div class="p-2">
+                                        <small class="blog-info py-0">
+                                            {% for tagitem in post.tags.all %}
+                                            <a href="" class="blog-info me-1  text-secondary">
+                                                <i class="fas fa-tags blog-tags"></i>
+                                                {{ tagitem.name }}
+                                            </a>
+                                            {% endfor %}
+                                        </small>
+                                        <hr>
+                                        <h5 class="blog-category">{{ post.category }}</h5>
+                                        <h6 class="blog-title">{{ post.title }}</h6>
+                                    </div>
+                                    <img class="img-fluid w-100" src="{{ item.urlToImage }}" alt="">
+
+                                    <div class="">
+                                        <div class="p-2">
+                                            <p class="blog-description">{{ post.description }}</p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="p-0 m-0">
+                                    <div class="p-2 bg-light">
+                                        <div class="d-flex  flex-row justify-content-between text-secondary fw-4">
+                                            <small>Posted by
+                                                <img class="image-circle rounded-circle"
+                                                    style="height: 25px; width: 25px; object-fit: cover;"
+                                                    src="{{ user.profile.image.url }}" alt="">
+                                                </span></td>
+                                                {{ post.author }} on {{ post.date_posted }}
+                                            </small>
+                                            <span>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-save"></i> save</a>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-comment"></i> 64 comments</a>
+                                                <a class="blog-info text-secondary p-2" href=""><i
+                                                        class="far fa-share-square"></i> share</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1 p-0 m-0">
+                                <span class="h-100 text-center text-white  d-flex flex-column justify-content-end"
+                                    style="background-color: rgb(178, 209, 221);">
+                                    <a href="" class="h1 p-0 m-0"><i class="fas fa-caret-up text-white"></i></a>
+                                    <p class="h6 p-0 m-0"><strong>132</strong></p>
+                                    <a href="" class="h1 p-0 m-0"><i class="fas fa-caret-down text-light"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- <div class="media">
+                                        <a class="pull-left" href="#"> <img class="media-object mn thumbnail mw50"
+                                        src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."> </a>
+                                        <div class="media-body">
+                                            <h5 class="media-heading mb20">Simon Rivers Posted
+                                            <small> - 3 hours ago</small>
+                                            </h5>
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                            class="mw140 mr25 mb20">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar8.png"
+                                            class="mw140 mr25 mb20">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="mw140 mb20">
+                                            <div class="media-links">
+                                                <span class="text-light fs12 mr10">
+                                                    <span class="fa fa-thumbs-o-up text-primary mr5"></span> Like </span>
+                                                    <span class="text-light fs12 mr10">
+                                                        <span class="fa fa-share text-primary mr5"></span> Share </span>
+                                                        <span class="text-light fs12 mr10">
+                                                            <span class="fa fa-floppy-o text-primary mr5"></span> Save </span>
+                                                            <span class="text-light fs12 mr10">
+                                                                <span class="fa fa-comment text-primary mr5"></span> Comment </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media mt25">
+                                                        <a class="pull-left" href="#"> <img
+                                                            class="media-object mn thumbnail thumbnail-sm rounded mw40"
+                                                        src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."> </a>
+                                                        <div class="media-body mb5">
+                                                            <h5 class="media-heading mbn">Simon Rivers Posted
+                                                            <small> - 3 hours ago</small>
+                                                            </h5>
+                                                            <p> Omg so freaking sweet dude.</p>
+                                                            <div class="media pb10">
+                                                                <a class="pull-left" href="#"> <img
+                                                                    class="media-object mn thumbnail thumbnail-sm rounded mw40"
+                                                                src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."> </a>
+                                                                <div class="media-body mb5">
+                                                                    <h5 class="media-heading mbn">Jessica Wong
+                                                                    <small> - 3 hours ago</small>
+                                                                    </h5>
+                                                                    <p>Omgosh I'm in love</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media mtn">
+                                                                <a class="pull-left" href="#"> <img
+                                                                    class="media-object mn thumbnail thumbnail-sm rounded mw40"
+                                                                src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."> </a>
+                                                                <div class="media-body mb5">
+                                                                    <h5 class="media-heading mbn">Jessica Wong
+                                                                    <small> - 3 hours ago</small>
+                                                                    </h5>
+                                                                    <p>Omgosh I'm in love</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media mt25">
+                                                        <a class="pull-left" href="#"> <img class="media-object thumbnail mw50"
+                                                        src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."> </a>
+                                                        <div class="media-body">
+                                                            <h5 class="media-heading mb20">Simon Rivers Posted
+                                                            <small> - 3 hours ago</small>
+                                                            </h5>
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                                                            class="mw140 mr25 mb20">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                                            class="mw140 mr25 mb20">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="mw140 mb20">
+                                                            <div class="media-links">
+                                                                <span class="text-light fs12 mr10">
+                                                                    <span class="fa fa-thumbs-o-up text-primary mr5"></span> Like </span>
+                                                                    <span class="text-light fs12 mr10">
+                                                                        <span class="fa fa-share text-primary mr5"></span> Share </span>
+                                                                        <span class="text-light fs12 mr10">
+                                                                            <span class="fa fa-floppy-o text-primary mr5"></span> Save </span>
+                                                                            <span class="text-light fs12 mr10">
+                                                                                <span class="fa fa-comment text-primary mr5"></span> Comment </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> -->
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+    </section>
+</div>
+{% endblock %}
